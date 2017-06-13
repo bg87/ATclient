@@ -1,6 +1,8 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 
+import { AuthGuard } from './shared/services/auth-guard.service';
+
 import { AppComponent } from "app/app.component";
 import { HomeComponent } from "app/home/home.component";
 import { ProjectsComponent } from './projects/projects.component';
@@ -19,8 +21,11 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
 
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'projects', component: ProjectsComponent },
+    // protected routes
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
+
+    // catchall
     { path: '**', component: HomeComponent }
 ]
 

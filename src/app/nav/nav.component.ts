@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { AuthService } from '../shared/services/auth.service';
@@ -9,10 +10,11 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class NavComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   signout() {
     this.authService.signout();
+    this.router.navigate(['/']);
   }
 
 }
