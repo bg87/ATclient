@@ -10,7 +10,7 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class NavComponent {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   signout() {
     this.authService.signout();

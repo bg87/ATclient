@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
 
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/services/auth-guard.service';
@@ -22,6 +24,16 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+const firebase = {
+    apiKey: "AIzaSyD-JSWrCTHVVM9VxKorkK_REDxizZAzK_s",
+    authDomain: "atproject-cb953.firebaseapp.com",
+    databaseURL: "https://atproject-cb953.firebaseio.com",
+    projectId: "atproject-cb953",
+    storageBucket: "atproject-cb953.appspot.com",
+    messagingSenderId: "429580396934"
+  }
 
 
 @NgModule({
@@ -46,7 +58,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    NgReduxModule
+    AngularFireModule.initializeApp(firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthService,
               AuthGuard],

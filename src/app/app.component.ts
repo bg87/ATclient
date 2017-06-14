@@ -1,21 +1,18 @@
 import { AuthService } from './shared/services/auth.service';
-import { AfterContentInit, Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+import { Component } from '@angular/core';
+import * as firebase from 'firebase/app';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(private authService: AuthService) {}
-  
-  ngOnInit() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyD-JSWrCTHVVM9VxKorkK_REDxizZAzK_s",
-      authDomain: "atproject-cb953.firebaseapp.com",
-    });
+  constructor(db: AngularFireDatabase, auth: AngularFireAuth) {
+      
   }
 
 }
